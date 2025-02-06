@@ -1,5 +1,8 @@
 using Backend.Data;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,43 +10,35 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<NogometContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NogometContext"));
 });
 
-//builder.Services.AddDbContext<InventorijaContext>(options =>
-//    options.UseSqlServer(
-//        builder.Configuration.GetConnectionString("InventorijaContext"),
-//        sqlOptions => sqlOptions.EnableRetryOnFailure())
-//);
 builder.Services.AddCors(o => {
 
     o.AddPolicy("CorsPolicy", builder =>
     {
         builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
     });
+
 });
+
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-
 app.MapOpenApi();
-
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
 app.UseSwagger();
-app.UseSwaggerUI(o =>
-{
+app.UseSwaggerUI(o => {
     o.EnableTryItOutByDefault();
     o.ConfigObject.AdditionalItems.Add("requestSnippetsEnabled", true);
 });
+
 
 app.MapControllers();
 app.UseCors("CorsPolicy");
