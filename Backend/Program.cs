@@ -1,7 +1,7 @@
 using Backend.Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+// dodati ovu liniju za swagger
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<NogometContext>(options => {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("NogometContext"));
+
+// dodavanje kontaksta baze podataka - dependency injection
+builder.Services.AddDbContext<BackendContext>(options => 
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BackendContext"));
 });
+
 
 builder.Services.AddCors(o => {
 
@@ -28,19 +33,23 @@ builder.Services.AddCors(o => {
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
 app.MapOpenApi();
+
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+// dodati ove dvije linije za swagger
 app.UseSwagger();
 app.UseSwaggerUI(o => {
     o.EnableTryItOutByDefault();
     o.ConfigObject.AdditionalItems.Add("requestSnippetsEnabled", true);
 });
 
-
 app.MapControllers();
+
 app.UseCors("CorsPolicy");
 
 app.Run();
