@@ -3,7 +3,17 @@ go
 
 drop database if exists nogomet;
 go
-
+SELECT name, collation_name FROM sys.databases;
+GO
+ALTER DATABASE db_a98acf_wp6 SET SINGLE_USER WITH
+ROLLBACK IMMEDIATE;
+GO
+ALTER DATABASE db_a98acf_wp6 COLLATE Croatian_CI_AS;
+GO
+ALTER DATABASE db_a98acf_wp6 SET MULTI_USER;
+GO
+SELECT name, collation_name FROM sys.databases;
+GO
 
 create database nogomet collate Croatian_CI_AS;
 go 
