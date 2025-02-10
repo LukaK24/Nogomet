@@ -14,7 +14,7 @@ GO
 
 
 
-CREATE TABLE klub(
+CREATE TABLE klubvi(
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     naziv VARCHAR(30) NOT NULL,
     osnovan INT NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE klub(
     liga VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE trener(
+CREATE TABLE treneri(
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(20) NOT NULL,
     prezime VARCHAR(20) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE utakmice(
     gostojuci_klub INT NOT NULL REFERENCES klub(sifra) -- Ispravljeno sa VARCHAR(30) na INT
 );
 
-CREATE TABLE igrac(
+CREATE TABLE igraci(
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(40) NOT NULL,
     prezime VARCHAR(30) NOT NULL,
