@@ -1,20 +1,22 @@
-
+﻿
 
 SELECT name, collation_name FROM sys.databases;
 GO
-ALTER DATABASE db_ab29ad_nogomet SET SINGLE_USER WITH
+ALTER DATABASE db_ab29ad_klub SET SINGLE_USER WITH
 ROLLBACK IMMEDIATE;
 GO
-ALTER DATABASE db_ab29ad_nogomet COLLATE Croatian_CI_AS;
+ALTER DATABASE db_ab29ad_klub COLLATE Croatian_CI_AS;
 GO
-ALTER DATABASE db_ab29ad_nogomet SET MULTI_USER;
+ALTER DATABASE db_ab29ad_klub SET MULTI_USER;
 GO
 SELECT name, collation_name FROM sys.databases;
 GO
 
 
 
-CREATE TABLE klubvi(
+
+-- 1️⃣ Kreiranje tablice klubovi
+CREATE TABLE klubovi (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     naziv VARCHAR(30) NOT NULL,
     osnovan INT NOT NULL,
@@ -22,50 +24,59 @@ CREATE TABLE klubvi(
     drzava VARCHAR(50) NOT NULL,
     liga VARCHAR(50) NOT NULL
 );
+GO
 
-CREATE TABLE treneri(
+-- 2️⃣ Kreiranje tablice trener
+CREATE TABLE trener (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(20) NOT NULL,
     prezime VARCHAR(20) NOT NULL,
-    klub INT NOT NULL REFERENCES klub(sifra), -- Ispravljeno sa VARCHAR(30) na INT
+    klub_id INT NOT NULL REFERENCES klubovi(sifra), 
     iskustvo INT NOT NULL
 );
+GO
 
-CREATE TABLE utakmice(
+-- 3️⃣ Kreiranje tablice utakmice
+CREATE TABLE utakmice (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    datum DATETIME NOT NULL,
-    vrijeme TIME,
-    domaci_klub INT NOT NULL REFERENCES klub(sifra), -- Ispravljeno sa VARCHAR(30) na INT
-    gostojuci_klub INT NOT NULL REFERENCES klub(sifra) -- Ispravljeno sa VARCHAR(30) na INT
+    datum datetime,
+    domaci_klub INT NOT NULL REFERENCES klubovi(sifra), 
+    gostujuci_klub INT NOT NULL REFERENCES klubovi(sifra),
+    CONSTRAINT chk_klubovi CHECK (domaci_klub <> gostujuci_klub) -- Klub ne može igrati protiv sebe
 );
+GO
 
-CREATE TABLE igraci(
+-- 4️⃣ Kreiranje tablice igrac
+CREATE TABLE igrac (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(40) NOT NULL,
     prezime VARCHAR(30) NOT NULL,
     pozicija VARCHAR(50) NOT NULL,
-    klub INT NOT NULL REFERENCES klub(sifra), -- Ispravljeno sa VARCHAR(30) na INT
-    oib CHAR(11)
+    klub_id INT NOT NULL REFERENCES klubovi(sifra), 
+    oib CHAR(11) NOT NULL UNIQUE
 );
 
--- 3. Unos podataka u tabelu klub
-INSERT INTO klub (naziv, osnovan, stadion, drzava, liga)
+
+-- 5️⃣ Unos podataka u tabelu klubovi
+INSERT INTO klubovi (naziv, osnovan, stadion, drzava, liga)
 VALUES 
-('Real Madrid', 1902, 'Santiago Bernab�u', '�panjolska', 'LaLiga'), 
+('Real Madrid', 1902, 'Santiago Bernabéu', 'Španjolska', 'LaLiga'), 
 ('Manchester City', 1880, 'Etihad', 'Engleska', 'Premier League'),
-('Barcelona', 1899, 'Spotify Camp', '�panjolska', 'LaLiga'),
-('Bayern Leverkusen', 1904, 'BayArena', 'Njema�ka', 'Bundesliga');
+('Barcelona', 1899, 'Spotify Camp Nou', 'Španjolska', 'LaLiga'),
+('Bayer Leverkusen', 1904, 'BayArena', 'Njemačka', 'Bundesliga');
 
--- 4. Unos podataka u tabelu trener (SADA KORISTIMO ID KLUBA UMJESTO NAZIVA)
-INSERT INTO trener (ime, prezime, klub, iskustvo)
+
+-- 6️⃣ Unos podataka u tabelu trener
+INSERT INTO trener (ime, prezime, klub_id, iskustvo)
 VALUES 
-('Carlo', 'Ancelotti', 1, 29),  -- Real Madrid (ID = 1)
-('Pep', 'Guardiola', 2, 17),     -- Manchester City (ID = 2)
-('Hansi', 'Flick', 3, 18),       -- Barcelona (ID = 3)
-('Xabi', 'Alonso', 4, 6);        -- Bayern Leverkusen (ID = 4)
+('Carlo', 'Ancelotti', 1, 29),  
+('Pep', 'Guardiola', 2, 17),     
+('Hansi', 'Flick', 3, 18),       
+('Xabi', 'Alonso', 4, 6);        
 
--- 5. Unos podataka u tabelu utakmice
-INSERT INTO utakmice (datum, domaci_klub, gostojuci_klub)
+
+-- 7️⃣ Unos podataka u tabelu utakmice
+INSERT INTO utakmice (datum, domaci_klub, gostujuci_klub)
 VALUES
 ('2024-05-20 18:00', 1, 2),
 ('2024-06-14 16:00', 3, 4),
@@ -75,14 +86,17 @@ VALUES
 ('2024-04-01 20:00', 1, 4),
 ('2024-03-05 18:00', 1, 2);
 
--- 6. Unos podataka u tabelu igrac
-INSERT INTO igrac (ime, prezime, pozicija, klub, oib)
+
+-- 8️⃣ Unos podataka u tabelu igrac
+INSERT INTO igrac (ime, prezime, pozicija, klub_id, oib)
 VALUES
 ('Federico', 'Valverde', 'RB', 1, '08057077736'),
-('Luka', 'Modri�', 'CM', 1, '07837540514'),
-('Mateo', 'Kova�i�', 'CM', 2, '26981510319'),
-('Jo�ko', 'Gvardiol', 'CB', 2, '44021291244'),
+('Luka', 'Modrić', 'CM', 1, '07837540514'),
+('Mateo', 'Kovačić', 'CM', 2, '26981510319'),
+('Joško', 'Gvardiol', 'CB', 2, '44021291244'),
 ('Dani', 'Olmo', 'CAM', 3, '44337232806'),
 ('Lamine', 'Yamal', 'RW', 3, '25169325706'),
 ('Jeremie', 'Frimpong', 'RB', 4, '99598162856'),
 ('Florian', 'Wirtz', 'CAM', 4, '38124701663');
+
+﻿

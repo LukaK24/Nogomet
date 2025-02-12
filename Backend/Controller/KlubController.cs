@@ -17,7 +17,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult GetKlubovi()
         {
             try
             {
@@ -29,15 +29,13 @@ namespace Backend.Controllers
             }
         }
 
-     
-
         [HttpGet]
         [Route("{sifra:int}")]
         public IActionResult GetBySifra(int sifra)
         {
             try
             {
-                var n = _context.Klubovi.Find(sifra); 
+                var n = _context.Klubovi.Find(sifra);
                 if (n == null)
                 {
                     return NotFound();
@@ -46,7 +44,7 @@ namespace Backend.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest(e.Message);
             }
         }
 
@@ -61,7 +59,7 @@ namespace Backend.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest(e.Message);
             }
         }
 
@@ -72,7 +70,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var n = _context.Klubovi.Find(sifra); 
+                var n = _context.Klubovi.Find(sifra);
                 if (n == null)
                 {
                     return NotFound();
@@ -90,7 +88,7 @@ namespace Backend.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest(e.Message);
             }
         }
 
@@ -100,7 +98,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var n = _context.Klubovi.Find(sifra); 
+                var n = _context.Klubovi.Find(sifra);
                 if (n == null)
                 {
                     return NotFound();
@@ -111,7 +109,7 @@ namespace Backend.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e);
+                return BadRequest(e.Message);
             }
         }
     }
