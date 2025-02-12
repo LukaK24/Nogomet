@@ -15,7 +15,7 @@ GO
 
 
 
--- 1️⃣ Kreiranje tablice klubovi
+
 CREATE TABLE klubovi (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     naziv VARCHAR(30) NOT NULL,
@@ -24,9 +24,7 @@ CREATE TABLE klubovi (
     drzava VARCHAR(50) NOT NULL,
     liga VARCHAR(50) NOT NULL
 );
-GO
 
--- 2️⃣ Kreiranje tablice trener
 CREATE TABLE trener (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(20) NOT NULL,
@@ -34,19 +32,17 @@ CREATE TABLE trener (
     klub_id INT NOT NULL REFERENCES klubovi(sifra), 
     iskustvo INT NOT NULL
 );
-GO
 
--- 3️⃣ Kreiranje tablice utakmice
 CREATE TABLE utakmice (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    datum datetime,
+    datum datetime NOT NULL,
     domaci_klub INT NOT NULL REFERENCES klubovi(sifra), 
     gostujuci_klub INT NOT NULL REFERENCES klubovi(sifra),
-    CONSTRAINT chk_klubovi CHECK (domaci_klub <> gostujuci_klub) -- Klub ne može igrati protiv sebe
+    CONSTRAINT chk_klubovi CHECK (domaci_klub <> gostujuci_klub) 
 );
-GO
 
--- 4️⃣ Kreiranje tablice igrac
+
+
 CREATE TABLE igrac (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(40) NOT NULL,
@@ -57,7 +53,7 @@ CREATE TABLE igrac (
 );
 
 
--- 5️⃣ Unos podataka u tabelu klubovi
+
 INSERT INTO klubovi (naziv, osnovan, stadion, drzava, liga)
 VALUES 
 ('Real Madrid', 1902, 'Santiago Bernabéu', 'Španjolska', 'LaLiga'), 
@@ -66,7 +62,7 @@ VALUES
 ('Bayer Leverkusen', 1904, 'BayArena', 'Njemačka', 'Bundesliga');
 
 
--- 6️⃣ Unos podataka u tabelu trener
+
 INSERT INTO trener (ime, prezime, klub_id, iskustvo)
 VALUES 
 ('Carlo', 'Ancelotti', 1, 29),  
@@ -75,7 +71,7 @@ VALUES
 ('Xabi', 'Alonso', 4, 6);        
 
 
--- 7️⃣ Unos podataka u tabelu utakmice
+
 INSERT INTO utakmice (datum, domaci_klub, gostujuci_klub)
 VALUES
 ('2024-05-20 18:00', 1, 2),
@@ -87,7 +83,7 @@ VALUES
 ('2024-03-05 18:00', 1, 2);
 
 
--- 8️⃣ Unos podataka u tabelu igrac
+
 INSERT INTO igrac (ime, prezime, pozicija, klub_id, oib)
 VALUES
 ('Federico', 'Valverde', 'RB', 1, '08057077736'),
