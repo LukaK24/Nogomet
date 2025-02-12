@@ -19,13 +19,13 @@ GO
 CREATE TABLE klubovi (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     naziv VARCHAR(30) NOT NULL,
-    osnovan INT NOT NULL,
+    osnovan datetime NOT NULL,
     stadion VARCHAR(50) NOT NULL,
     drzava VARCHAR(50) NOT NULL,
     liga VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE trener (
+CREATE TABLE treneri (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(20) NOT NULL,
     prezime VARCHAR(20) NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE utakmice (
 
 
 
-CREATE TABLE igrac (
+CREATE TABLE igraci (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     ime VARCHAR(40) NOT NULL,
     prezime VARCHAR(30) NOT NULL,
@@ -56,14 +56,14 @@ CREATE TABLE igrac (
 
 INSERT INTO klubovi (naziv, osnovan, stadion, drzava, liga)
 VALUES 
-('Real Madrid', 1902, 'Santiago Bernabéu', 'Španjolska', 'LaLiga'), 
-('Manchester City', 1880, 'Etihad', 'Engleska', 'Premier League'),
-('Barcelona', 1899, 'Spotify Camp Nou', 'Španjolska', 'LaLiga'),
-('Bayer Leverkusen', 1904, 'BayArena', 'Njemačka', 'Bundesliga');
+('Real Madrid', '1902-01-01', 'Santiago Bernabéu', 'Španjolska', 'LaLiga'), 
+('Manchester City', '1880-01-01', 'Etihad', 'Engleska', 'Premier League'),
+('Barcelona', '1899-01-01', 'Spotify Camp Nou', 'Španjolska', 'LaLiga'),
+('Bayer Leverkusen', '1904-01-01', 'BayArena', 'Njemačka', 'Bundesliga');
 
 
 
-INSERT INTO trener (ime, prezime, klub_id, iskustvo)
+INSERT INTO treneri (ime, prezime, klub_id, iskustvo)
 VALUES 
 ('Carlo', 'Ancelotti', 1, 29),  
 ('Pep', 'Guardiola', 2, 17),     
@@ -84,7 +84,7 @@ VALUES
 
 
 
-INSERT INTO igrac (ime, prezime, pozicija, klub_id, oib)
+INSERT INTO igraci (ime, prezime, pozicija, klub_id, oib)
 VALUES
 ('Federico', 'Valverde', 'RB', 1, '08057077736'),
 ('Luka', 'Modrić', 'CM', 1, '07837540514'),

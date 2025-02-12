@@ -13,10 +13,6 @@ namespace Backend.Data
 
 
         public DbSet<Klub> Klubovi { get; set; }
-        public DbSet<Klub> Klub { get; set; } // Provjeri da ime odgovara bazi
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Klub>().ToTable("Klub");
-        }
+       
     }    }
