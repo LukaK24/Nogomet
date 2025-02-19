@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import { Route, Routes } from 'react-router-dom';
 import { RouteNames } from './constants';
 import Pocetna from './pages/Pocetna';
-import KluboviPregled from './pages/KLuboviPregled';
+import KluboviPregled from './pages/klubovi/KluboviPregled';
 
 
 function App() {

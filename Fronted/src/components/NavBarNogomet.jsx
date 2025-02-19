@@ -30,7 +30,10 @@ export default function NavBarNogomet(){
               >Klubovi</NavDropdown.Item>
            
             </NavDropdown>
+            <Nav.Link href="https://luka222-001-site1.mtempurl.com/swagger/index.html" target='_blank'>Swagger</Nav.Link>
+            
           </Nav>
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
