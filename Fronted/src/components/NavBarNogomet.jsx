@@ -17,6 +17,7 @@ export default function NavBarNogomet(){
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand 
+        className='ruka'
         onClick={()=>navigate(RouteNames.HOME)}
         >Nogomet APP</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
