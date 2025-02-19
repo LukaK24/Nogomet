@@ -1,0 +1,4 @@
+ovo treba skinuti u CMD
+
+npm install react-bootstrap bootstrap
+npm install react-router-dom
