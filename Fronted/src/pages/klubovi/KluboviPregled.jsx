@@ -9,7 +9,7 @@ export default function KluboviPregled(){
 
 
     async function dohvatiKlubove(){
-        const odgovor = KlubService.get()
+        const odgovor = await KlubService.get()
         setKlubovi(odgovor)
 
     }
@@ -23,10 +23,37 @@ export default function KluboviPregled(){
 
     return(
         <>
-        <Table>
+        <Table striped bordered hover responsive>
             <thead>
-                
+                <tr>    
+                    <th>Naziv</th>
+                    <th>Osnovan</th>
+                    <th>Stadion</th>
+                    <th>Država</th>
+                    <th>Liga</th>
+                </tr>
             </thead>
+            <tbody>
+                {klubovi && klubovi.map((Klub,index)=>(
+                    <tr key={index}>
+                        <td>
+                            {Klub.naziv}
+                        </td>
+                        <td>
+                            {Klub.osnovan}
+                        </td>
+                        <td>
+                            {Klub.stadion}
+                        </td>
+                        <td>
+                            {Klub.drzava}
+                        </td>
+                        <td>
+                            {Klub.liga}
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
         </Table>
         </>
 
