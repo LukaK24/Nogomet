@@ -1,4 +1,17 @@
 .ruka{
 cursor: pointer;
+}
+
+.sredina{
+    text-align: right;
+}
+
+.desno{
+    text-align: right;
 
 }
+
+.siroko{
+    width: 90%; 
+}
+

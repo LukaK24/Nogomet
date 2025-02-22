@@ -1,7 +1,8 @@
 export const RouteNames={
   HOME: '/',
 
-  KLUB_PREGLED: '/klubovi'
+  KLUB_PREGLED: '/klubovi',
+  KLUB_NOVI: '/klubovi/dodaj'
 
 }
 

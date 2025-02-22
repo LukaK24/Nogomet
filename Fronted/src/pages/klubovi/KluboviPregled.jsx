@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import KlubService from "../../service/KlubService"
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { RouteNames } from "../../constants";
+
 
 
 export default function KluboviPregled(){
@@ -21,8 +24,14 @@ export default function KluboviPregled(){
         dohvatiKlubove();
     },[])
 
+ 
+
     return(
         <>
+        <Link
+        to={RouteNames.KLUB_NOVI}
+        className="btn btn-success siroko"
+        >Dodaj novi klub</Link>
         <Table striped bordered hover responsive>
             <thead>
                 <tr>    
@@ -40,7 +49,7 @@ export default function KluboviPregled(){
                             {Klub.naziv}
                         </td>
                         <td>
-                            {Klub.osnovan}
+                            {Klub.osnova}
                         </td>
                         <td>
                             {Klub.stadion}
