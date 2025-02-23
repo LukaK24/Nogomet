@@ -4,12 +4,23 @@ import { RouteNames } from "../../constants";
 import KlubService from "../../service/KlubService";
 
 
-export default function Klubovidodaj(){
+export default function KluboviPromjena(){
 
      const navigate = useNavigate();
+     const [klub,setklub] = useState({});
+     const routeParams = useParams();
+
+     async function dohvatiklub(){
+        const  odgovor = await KlubService.getBySifra(routeParams.sifra)
+        setklub(odgovor)
+     }
+
+     useEffect(() =>{
+        dohvatiklub();
+     },[])
 
     async function dodaj(klub){
-      const odgovor= await KlubService.dodaj(klub);
+      const odgovor=KlubService.dodaj(klub);
       if(odgovor.greska){
         alert(odgovor.poruka)
         return
@@ -49,13 +60,15 @@ export default function Klubovidodaj(){
 
             <Form.Group controlId="naziv">
                 <Form.Label>Naziv</Form.Label>
-                <Form.Control type="text" name="naziv" required/>
+                <Form.Control type="text" name="naziv" required
+                defaultValue={klub.naziv}/>
 
             </Form.Group>
 
             <Form.Group controlId="osnovan">
                 <Form.Label>Osnovan</Form.Label>
-                <Form.Control type="number" name="osnovan" required/>
+                <Form.Control type="number" name="osnovan" required
+                defaultValue={klub.osnovan}/>
 
             </Form.Group>
 

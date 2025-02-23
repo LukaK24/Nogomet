@@ -1,4 +1,5 @@
-import { HttppService } from "./HttpService.js";
+import { HttppService } from "./HttpService";
+
 
 
 async function get() {
@@ -10,15 +11,25 @@ async function get() {
     })
     .catch((e)=>{})
 }
+async function getBySifra(sifra) {
+
+    return await HttppService.get('/Klub' + sifra)
+    .then((odgovor)=>{
+        return odgovor.data;
+    })
+    .catch((e)=>{})
+}
 
 async function dodaj(klub){
-    return HttppService.post('/Klub', klub)
+    return HttppService.post('/Klub',klub)
     .then(()=>{return{greska: false, poruka: 'Dodano'}})
     .catch(()=>{return{greska: true, poruka:'Problem kod dodavanja'}})
 }
 
 export default{
 
-    get 
+    get, 
+    dodaj,
+    getBySifra
 }
     

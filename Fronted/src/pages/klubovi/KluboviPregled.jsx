@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import KlubService from "../../service/KlubService"
-import { Table } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Table } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 
 
 
 export default function KluboviPregled(){
     const [klubovi, setKlubovi] = useState();
+    const navigate = useNavigate();
 
 
 
@@ -21,6 +22,7 @@ export default function KluboviPregled(){
 
     //hooks (kuka) se izvodi prilikom dolaka na tranicu klubovi
     useEffect(() =>{
+        
         dohvatiKlubove();
     },[])
 
@@ -40,9 +42,11 @@ export default function KluboviPregled(){
                     <th>Stadion</th>
                     <th>Država</th>
                     <th>Liga</th>
+                    <th>Akcija</th>
                 </tr>
             </thead>
             <tbody>
+
                 {klubovi && klubovi.map((Klub,index)=>(
                     <tr key={index}>
                         <td>
@@ -59,6 +63,11 @@ export default function KluboviPregled(){
                         </td>
                         <td>
                             {Klub.liga}
+                        </td>
+                        <td>
+                            <Button
+                            onClick={()=>navigate(`/klubovi/${klubovi.sifra}`)}
+                            >Promjena</Button>
                         </td>
                     </tr>
                 ))}
