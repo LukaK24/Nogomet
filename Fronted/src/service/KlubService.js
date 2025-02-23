@@ -11,6 +11,11 @@ async function get() {
     .catch((e)=>{})
 }
 
+async function dodaj(klub){
+    return HttppService.post('/Klub', klub)
+    .then(()=>{return{greska: false, poruka: 'Dodano'}})
+    .catch(()=>{return{greska: true, poruka:'Problem kod dodavanja'}})
+}
 
 export default{
 
