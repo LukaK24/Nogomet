@@ -19,7 +19,7 @@ GO
 CREATE TABLE klubovi (
     sifra INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     naziv VARCHAR(30) NOT NULL,
-    osnovan datetime NOT NULL,
+    osnovan int NOT NULL,
     stadion VARCHAR(50) NOT NULL,
     drzava VARCHAR(50) NOT NULL,
     liga VARCHAR(50) NOT NULL
@@ -56,10 +56,10 @@ CREATE TABLE igraci (
 
 INSERT INTO klubovi (naziv, osnovan, stadion, drzava, liga)
 VALUES 
-('Real Madrid', '1902-01-01', 'Santiago Bernabéu', 'Španjolska', 'LaLiga'), 
-('Manchester City', '1880-01-01', 'Etihad', 'Engleska', 'Premier League'),
-('Barcelona', '1899-01-01', 'Spotify Camp Nou', 'Španjolska', 'LaLiga'),
-('Bayer Leverkusen', '1904-01-01', 'BayArena', 'Njemačka', 'Bundesliga');
+('Real Madrid', 1902, 'Santiago Bernabéu', 'Španjolska', 'LaLiga'), 
+('Manchester City', 1880, 'Etihad', 'Engleska', 'Premier League'),
+('Barcelona', 1899, 'Spotify Camp Nou', 'Španjolska', 'LaLiga'),
+('Bayer Leverkusen', 1904, 'BayArena', 'Njemačka', 'Bundesliga');
 
 
 
