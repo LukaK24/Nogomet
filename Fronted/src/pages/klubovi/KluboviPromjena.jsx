@@ -39,7 +39,7 @@ export default function KluboviPromjena(){
         e.preventDefault(); //nemoj odraditi zahtje na server po standradnom načinu
         let podaci =new FormData(e.traget);
 
-        dodaj(
+        promjena(
             
             {
                 naziv: podaci.get('naziv'),

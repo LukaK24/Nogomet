@@ -26,6 +26,21 @@ export default function KluboviPregled(){
         dohvatiKlubove();
     },[])
 
+    function obrisi(sifra){
+        if(!confirm('Sigurno obrisati')){
+            return
+        }
+        brisanjeKluba(sifra);
+    }
+
+    async function brisanjeKluba(sifra){
+        const odgovor = await KlubService.obrisi(sifra);
+        if(odgovor.greska){
+            alert(odgovor.poruka)
+            return
+        }
+        dohvatiKlubove();
+    }
  
 
     return(
@@ -68,6 +83,11 @@ export default function KluboviPregled(){
                             <Button
                             onClick={()=>navigate(`/klubovi/${klubovi.sifra}`)}
                             >Promjena</Button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Button
+                            variant="danger"
+                            onClick={()=>obrisi(klubovi.sifra)}
+                            >Obriši</Button>
                         </td>
                     </tr>
                 ))}

@@ -20,16 +20,27 @@ async function getBySifra(sifra) {
     .catch((e)=>{})
 }
 
-async function dodaj(klub){
+async function dodaj(Klub){
     return HttppService.post('/Klub',klub)
     .then(()=>{return{greska: false, poruka: 'Dodano'}})
     .catch(()=>{return{greska: true, poruka:'Problem kod dodavanja'}})
 }
-
+async function promjena(sifra,klub) {
+    return HttppService.put('/Klub/'+sifra,klub)
+    .then(()=>{return {greska:false, poruka:'Promjenjeno'}})
+    .catch(()=>{return {greska: true, poruka: 'Problem kod promjene'}})
+    
+}
+async function obrisi(sifra,klub){
+    return HttppService.delete('/Klub/'+sifra)
+    .then(()=>{return {greska:false, poruka:'Obrisano'}})
+    .catch(()=>{return {greska: true, poruka: 'Problem kod brisanja'}})
+}
 export default{
 
     get, 
     dodaj,
-    getBySifra
+    getBySifra,
+    promjena,
+    obrisi
 }
-    
