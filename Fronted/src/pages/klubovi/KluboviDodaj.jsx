@@ -2,6 +2,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import KlubService from "../../service/KlubService";
+import moment from "moment";
 
 
 export default function Klubovidodaj(){
@@ -15,7 +16,7 @@ export default function Klubovidodaj(){
         return
       }
       
-      //navigate(RouteNames.KLUB_PREGLED)
+      navigate(RouteNames.KLUB_PREGLED)
 
     }
     
@@ -26,13 +27,13 @@ export default function Klubovidodaj(){
 
     function odradiSubmit(e){ //e je event
         e.preventDefault(); //nemoj odraditi zahtje na server po standradnom načinu
-        let podaci =new FormData(e.traget);
+        let podaci =new FormData(e.target);
 
         dodaj(
             
             {
                 naziv: podaci.get('naziv'),
-                osnovan: podaci.get('osnovan'),
+                osnovan: parseInt(podaci.get('osnovan')),
                 stadion: podaci.get('stadion'),
                 drzava: podaci.get('drzava'),
                 liga: podaci.get('liga')

@@ -1,7 +1,8 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import KlubService from "../../service/KlubService";
+import { useEffect, useState } from "react";
 
 
 export default function KluboviPromjena(){
@@ -43,7 +44,7 @@ export default function KluboviPromjena(){
             
             {
                 naziv: podaci.get('naziv'),
-                osnovan: podaci.get('osnovan'),
+                osnovan: parseInt(podaci.get('osnovan')),
                 stadion: podaci.get('stadion'),
                 drzava: podaci.get('drzava'),
                 liga: podaci.get('liga')

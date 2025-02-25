@@ -81,12 +81,12 @@ export default function KluboviPregled(){
                         </td>
                         <td>
                             <Button
-                            onClick={()=>navigate(`/klubovi/${klubovi.sifra}`)}
+                            onClick={()=>navigate(`/klubovi/${Klub.sifra}`)}
                             >Promjena</Button>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <Button
                             variant="danger"
-                            onClick={()=>obrisi(klubovi.sifra)}
+                            onClick={()=>obrisi(Klub.sifra)}
                             >Obriši</Button>
                         </td>
                     </tr>

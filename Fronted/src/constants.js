@@ -3,7 +3,7 @@ export const RouteNames={
 
   KLUB_PREGLED: '/klubovi',
   KLUB_NOVI: '/klubovi/dodaj',
-  KLUB_PROMJENA: '/Klubovi/:sifra'
+  KLUB_PROMJENA: '/klubovi/:sifra'
 
 }
 

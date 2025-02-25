@@ -13,14 +13,14 @@ async function get() {
 }
 async function getBySifra(sifra) {
 
-    return await HttppService.get('/Klub' + sifra)
+    return await HttppService.get('/Klub/' + sifra)
     .then((odgovor)=>{
         return odgovor.data;
     })
     .catch((e)=>{})
 }
 
-async function dodaj(Klub){
+async function dodaj(klub){
     return HttppService.post('/Klub',klub)
     .then(()=>{return{greska: false, poruka: 'Dodano'}})
     .catch(()=>{return{greska: true, poruka:'Problem kod dodavanja'}})
