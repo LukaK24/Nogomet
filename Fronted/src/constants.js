@@ -7,4 +7,6 @@ export const RouteNames={
 
 }
 
-export const BACKEND_URL='https://luka222-001-site1.mtempurl.com/api/v1';
+export const BACKEND_URL='https://localhost:7117/api/v1';
+
+//'https://luka222-001-site1.mtempurl.com/api/v1';

@@ -68,7 +68,7 @@ export default function KluboviPregled(){
                             {Klub.naziv}
                         </td>
                         <td>
-                            {Klub.osnova}
+                            {Klub.osnovan}
                         </td>
                         <td>
                             {Klub.stadion}

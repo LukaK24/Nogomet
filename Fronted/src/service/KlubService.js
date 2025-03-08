@@ -25,7 +25,7 @@ async function dodaj(klub){
     .then(()=>{return{greska: false, poruka: 'Dodano'}})
     .catch(()=>{return{greska: true, poruka:'Problem kod dodavanja'}})
 }
-async function promjena(sifra,klub) {
+async function promijena(sifra,klub) {
     return HttppService.put('/Klub/'+sifra,klub)
     .then(()=>{return {greska:false, poruka:'Promjenjeno'}})
     .catch(()=>{return {greska: true, poruka: 'Problem kod promjene'}})
@@ -41,6 +41,6 @@ export default{
     get, 
     dodaj,
     getBySifra,
-    promjena,
+    promijena,
     obrisi
 }

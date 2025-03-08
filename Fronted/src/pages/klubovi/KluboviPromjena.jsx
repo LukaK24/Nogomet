@@ -30,28 +30,48 @@ export default function KluboviPromjena(){
       //navigate(RouteNames.KLUB_PREGLED)
 
     }
+   
+
     
     
-  
+     async function odradiSubmit(e) {
+        e.preventDefault(); // Sprječava standardni submit ponašanje
+    
+        if (!klub.sifra) {
+            alert("Greška: Klub nije ispravno učitan!");
+            return;
+        }
+    
+        let podaci = new FormData(e.target);
+    
+        let noviPodaci = {
+            naziv: podaci.get('naziv'),
+            osnovan: parseInt(podaci.get('osnovan')),
+            stadion: podaci.get('stadion'),
+            drzava: podaci.get('drzava'),
+            liga: podaci.get('liga')
+        };
+    
+        console.log("Podaci za ažuriranje:", noviPodaci); // Debugging
+    
+        // POZIVAMO KlubService.promjena umjesto nepostojeće 'promijena' funkcije
+        let odgovor = await KlubService.promijena(klub.sifra, noviPodaci);
+    
+        if (odgovor.greska) {
+            alert(odgovor.poruka);
+        } else {
+            alert("Klub uspješno promijenjen!");
+            navigate(RouteNames.KLUB_PREGLED); // Navigiraj nazad na pregled klubova
+        }
+    }
         
     
 
-    function odradiSubmit(e){ //e je event
-        e.preventDefault(); //nemoj odraditi zahtje na server po standradnom načinu
-        let podaci =new FormData(e.traget);
-
-        promjena(
-            
-            {
-                naziv: podaci.get('naziv'),
-                osnovan: parseInt(podaci.get('osnovan')),
-                stadion: podaci.get('stadion'),
-                drzava: podaci.get('drzava'),
-                liga: podaci.get('liga')
-            }
-              
-        );
-    }
+   
+        
+        
+        
+    
 
 
     return(
@@ -75,19 +95,22 @@ export default function KluboviPromjena(){
 
             <Form.Group controlId="stadion">
                 <Form.Label>Stadion</Form.Label>
-                <Form.Control type="text" name="stadion" required/>
+                <Form.Control type="text" name="stadion" required
+                defaultValue={klub.stadion}/>
 
             </Form.Group>
 
             <Form.Group controlId="drzava">
                 <Form.Label>Država</Form.Label>
-                <Form.Control type="text" name="drzava" required/>
+                <Form.Control type="text" name="drzava" required
+                defaultValue={klub.drzava}/>
 
             </Form.Group>
 
             <Form.Group controlId="liga">
                 <Form.Label>Liga</Form.Label>
-                <Form.Control type="text" name="liga" required/>
+                <Form.Control type="text" name="liga" required
+                defaultValue={klub.liga}/>
 
             </Form.Group>
 
