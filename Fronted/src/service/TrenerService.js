@@ -1,4 +1,5 @@
-import { HttpService } from "./HttpService";
+import { HttppService } from "./HttpService";
+
 
 async function get() {
     return HttpService.get('/Trener')
