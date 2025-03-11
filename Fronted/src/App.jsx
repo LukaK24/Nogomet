@@ -8,6 +8,10 @@ import Pocetna from './pages/Pocetna';
 import KluboviPregled from './pages/klubovi/KluboviPregled';
 import KluboviDodaj from './pages/klubovi/KluboviDodaj';
 import KluboviPromjena from './pages/klubovi/KluboviPromjena';
+import TreneriPregled from './pages/treneri/TreneriPregled';
+import TreneriDodaj from './pages/treneri/TreneriDodaj';
+import TreneriPromjena from './pages/treneri/TreneriPromjena';
+
 
 
 function App() {
@@ -25,9 +29,13 @@ function App() {
         <Route path={RouteNames.KLUB_PREGLED} element={<KluboviPregled />} />
         <Route path={RouteNames.KLUB_NOVI}element={<KluboviDodaj />} />
         <Route path={RouteNames.KLUB_PROMJENA} element={<KluboviPromjena />} />
+      
+       
+      
+        <Route path={RouteNames.TRENER_PREGLED} element={<TreneriPregled />} /> 
+        <Route path={RouteNames.TRENER_NOVI} element={<TreneriDodaj />} />
+        <Route path={RouteNames.TRENER_PROMJENA} element={<TreneriPromjena />} />
       </Routes>
-       
-       
 
     
        

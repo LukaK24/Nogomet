@@ -28,6 +28,10 @@ export default function NavBarNogomet(){
               <NavDropdown.Item
               onClick={()=>navigate(RouteNames.KLUB_PREGLED)}
               >Klubovi</NavDropdown.Item>
+
+                    <NavDropdown.Item
+                    onClick={()=>navigate(RouteNames.TRENER_PREGLED)}
+                    >Treneri</NavDropdown.Item>
            
             </NavDropdown>
             <Nav.Link href="https://luka222-001-site1.mtempurl.com/swagger/index.html" target='_blank'>Swagger</Nav.Link>

@@ -2,6 +2,7 @@
 
 using Backend.Controllers;
 using Backend.Data;
+using FluentAssertions.Common;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,8 +16,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 
 // dodavanje kontaksta baze podataka - dependency injection
-builder.Services.AddDbContext<BackendContext>(options =>
-{
+builder.Services.AddDbContext<BackendContext>(options =>{
     options.UseSqlServer(builder.Configuration.GetConnectionString("BackendContext"));
 });
 
@@ -54,6 +54,10 @@ app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
 
 app.Run();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
 
 // BackendContext class definition
 

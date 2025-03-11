@@ -1,7 +1,7 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RouteNames } from "../../constants";
-import KlubService from "../../service/KlubService";
+import KlubService from "../../service/KlubService"
 import { useEffect, useState } from "react";
 
 

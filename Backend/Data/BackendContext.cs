@@ -1,6 +1,8 @@
 ﻿using Backend.Controllers;
 using Backend.Models;
+using Backend.Controllers;
 using Microsoft.EntityFrameworkCore;
+using Backend.Controller;
 
 namespace Backend.Data
 {
@@ -14,5 +16,10 @@ namespace Backend.Data
 
         public DbSet<Klub> Klubovi { get; set; }
 
-       
+        public DbSet<Trener> Treneri { get; set; }
+
     }    }
+       
+     
+
+  

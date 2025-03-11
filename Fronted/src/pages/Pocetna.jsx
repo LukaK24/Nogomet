@@ -13,7 +13,7 @@ const Pocetna = () => {
     justifyContent: 'center',
     alignItems: 'center',
     color: 'black', // Postavljanje boje teksta na crnu
-    maxWidth: '90%', // Maksimalna širina 90% ekrana
+    maxWidth: '80%', // Maksimalna širina 90% ekrana
     wordWrap: 'break-word', // Ako je tekst predug, prelomit će se
   };
 
