@@ -13,7 +13,7 @@ export default function UtakmicePromjena(){
 
     async function dohvatiUtakmicu(){
         const odgovor = await UtakmicaService.getBySifra(routeParams.sifra)
-        setUtakmica(odgovor)
+        setUtakmice(odgovor)
     }
 
     useEffect(()=>{
@@ -50,24 +50,24 @@ export default function UtakmicePromjena(){
 
         <Form.Group controlId="datum">
             <Form.Label>Datum</Form.Label>
-            <Form.Control type="datetime-local" name="datum" required defaultValue={utakmica.datum} />
+            <Form.Control type="datetime-local" name="datum" required defaultValue={utakmice.datum} />
         </Form.Group>
 
         <Form.Group controlId="domaci_klub">
             <Form.Label>Domaći klub</Form.Label>
-            <Form.Control type="text" name="domaci_klub" required defaultValue={utakmica.domaci_klub} />
+            <Form.Control type="text" name="domaci_klub" required defaultValue={utakmice.domaci_klub} />
         </Form.Group>
 
         <Form.Group controlId="gostujuci_klub">
             <Form.Label>Gostujući klub</Form.Label>
-            <Form.Control type="text" name="gostujuci_klub" required defaultValue={utakmica.gostujuci_klub} />
+            <Form.Control type="text" name="gostujuci_klub" required defaultValue={utakmice.gostujuci_klub} />
         </Form.Group>
         <hr/>
 
         <Row>
             <Col xs={6} sm={6} md={3} lg={2} xl={6} xxl={6}>
                 <Link
-                to={RouteNames.UTAKMICA_PREGLED}
+                to={RouteNames.UTAKMICE_PREGLED}
                 className="btn btn-danger siroko"
                 >Odustani</Link>
             </Col>

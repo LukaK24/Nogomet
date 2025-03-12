@@ -65,7 +65,7 @@ namespace Backend.Controller
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
-        public IActionResult Put(int sifra, Utakmica utakmica)
+        public IActionResult Put(int sifra, Utakmice utakmica)
         {
             try
             {
@@ -115,10 +115,6 @@ namespace Backend.Controller
         }
     }
 
-    public class Utakmica
-    {
-        public DateTime? Datum { get; internal set; }
-        public int Domaci_klub { get; internal set; }
-        public int Gostujuci_klub { get; internal set; }
-    }
+  
+    
 }
