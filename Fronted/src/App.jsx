@@ -32,9 +32,9 @@ function App() {
       
        
       
-        <Route path={RouteNames.TRENER_PREGLED} element={<TreneriPregled />} /> 
-        <Route path={RouteNames.TRENER_NOVI} element={<TreneriDodaj />} />
-        <Route path={RouteNames.TRENER_PROMJENA} element={<TreneriPromjena />} />
+        <Route path={RouteNames.TRENER_PREGLED} element={<TreneriPregled />} />
+       <Route path={RouteNames.TRENER_NOVI} element={<TreneriDodaj />} />
+       <Route path={RouteNames.TRENER_PROMJENA} element={<TreneriPromjena />} />
       </Routes>
 
     

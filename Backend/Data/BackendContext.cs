@@ -4,6 +4,7 @@ using Backend.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Backend.Controller;
 
+
 namespace Backend.Data
 {
     public class BackendContext : DbContext
@@ -17,7 +18,7 @@ namespace Backend.Data
         public DbSet<Klub> Klubovi { get; set; }
 
         public DbSet<Trener> Treneri { get; set; }
-
+        
     }    }
        
      

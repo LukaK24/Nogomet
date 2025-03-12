@@ -48,12 +48,14 @@ namespace Backend.Controllers
             }
         }
 
+        // ... existing code ...
+
         [HttpPost]
-        public IActionResult Post(Klub klub)
+        public IActionResult Post(Klub klub) // Use the Klub type from Backend.Models
         {
             try
             {
-                _context.Klubovi.Add(klub);
+                var entityEntry = _context.Klubovi.Add(klub);
                 _context.SaveChanges();
                 return StatusCode(StatusCodes.Status201Created, klub);
             }

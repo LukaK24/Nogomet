@@ -1,17 +1,28 @@
 ﻿using AutoMapper;
 using Backend.Data;
+using Backend.Models;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Backend.Controller
+namespace Backend.Controllers
 {
-    public class BackendController
-    {
-        private BackendContext context;
-        private IMapper mapper;
 
-        public BackendController(BackendContext context, IMapper mapper)
+    public abstract class EdunovaController : ControllerBase
+    {
+
+        // dependecy injection
+        // 1. definiraš privatno svojstvo
+        protected readonly BackendContext _context;
+
+        protected readonly IMapper _mapper;
+
+
+        // dependecy injection
+        // 2. proslijediš instancu kroz konstruktor
+        public EdunovaController(BackendContext context, IMapper mapper)
         {
-            this.context = context;
-            this.mapper = mapper;
+            _context = context;
+            _mapper = mapper;
         }
+
     }
 }

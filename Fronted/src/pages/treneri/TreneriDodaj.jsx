@@ -16,17 +16,36 @@ export default function TreneriDodaj() {
         navigate(RouteNames.TRENERI_PREGLED);
     }
 
-    function odradiSubmit(e) { // e je event
-        e.preventDefault(); // nemoj odraditi zahtjev na server po standardnom načinu
+    async function odradiSubmit(e) { 
+        e.preventDefault(); 
+        console.log("✔ Dugme 'Dodaj trenera' je kliknuto!");
 
         let podaci = new FormData(e.target);
-
-        dodaj({
+        let noviTrener={
             ime: podaci.get('ime'),
             prezime: podaci.get('prezime'),
             iskustvo: podaci.get('iskustvo'),
             klub_id: podaci.get('klub_id')
-        });
+        
+
+        }
+        console.log("📌 Podaci iz forme:", noviTrener);
+       
+        try {
+            const odgovor = await TrenerService.dodaj(noviTrener);
+            console.log("📌 Odgovor servera:", odgovor);
+    
+            if (odgovor?.greska) {
+                alert("❌ Greška: " + odgovor.poruka);
+                return;
+            }
+    
+            alert("✅ Trener uspješno dodat!");
+            navigate("/treneri"); 
+        } catch (error) {
+            console.error("❌ Greška pri dodavanju trenera:", error);
+            alert("Nešto nije u redu sa dodavanjem trenera!");
+        }
     }
 
     return (
@@ -58,8 +77,8 @@ export default function TreneriDodaj() {
 
                 <Row>
                     <Col xs={6} sm={6} md={3} lg={2} xl={6} xxl={6}>
-                        <Link to={RouteNames.TRENERI_PREGLED} className="btn btn-danger siroko">
-                            Odustani
+                    <Link to="/treneri" className="btn btn-danger siroko">
+                    Odustani
                         </Link>
                     </Col>
                     <Col xs={6} sm={6} md={9} lg={10} xl={6} xxl={6}>
