@@ -1,4 +1,4 @@
-﻿using Backend.Controllers;
+﻿
 using Backend.Models;
 using Backend.Controllers;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +18,9 @@ namespace Backend.Data
         public DbSet<Klub> Klubovi { get; set; }
 
         public DbSet<Trener> Treneri { get; set; }
-        
+
+        public DbSet<Utakmice> Utakmice { get; set; }
+        public object Utakmica { get; internal set; }
     }    }
        
      

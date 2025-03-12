@@ -11,7 +11,9 @@ import KluboviPromjena from './pages/klubovi/KluboviPromjena';
 import TreneriPregled from './pages/treneri/TreneriPregled';
 import TreneriDodaj from './pages/treneri/TreneriDodaj';
 import TreneriPromjena from './pages/treneri/TreneriPromjena';
-
+import UtakmicePregled from './pages/utakmice/UtakmicePregled';
+import UtakmiceDodaj from './pages/utakmice/UtakmiceDodaj';
+import UtakmicePromjena from './pages/utakmice/UtakmicePromjena';
 
 
 function App() {
@@ -35,8 +37,12 @@ function App() {
         <Route path={RouteNames.TRENER_PREGLED} element={<TreneriPregled />} />
        <Route path={RouteNames.TRENER_NOVI} element={<TreneriDodaj />} />
        <Route path={RouteNames.TRENER_PROMJENA} element={<TreneriPromjena />} />
-      </Routes>
+      
 
+          <Route path={RouteNames.UTAKMICE_PREGLED} element={<UtakmicePregled />} />
+          <Route path={RouteNames.UTAKMICE_NOVI} element={<UtakmiceDodaj />} />
+          <Route path={RouteNames.UTAKMICE_PROMJENA} element={<UtakmicePromjena />} />
+          </Routes>
     
        
        <hr />
