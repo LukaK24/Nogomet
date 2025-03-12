@@ -15,6 +15,11 @@ export const RouteNames={
   UTAKMICE_PROMJENA: '/utakmice/:sifra',
 
 
+IGRACI_PREGLED: '/igraci',
+IGRACI_NOVI: '/igraci/dodaj',
+IGRACI_PROMJENA: '/igraci/:sifra',
+
+
 };
 
 export const BACKEND_URL='https://luka222-001-site1.mtempurl.com/api/v1/';

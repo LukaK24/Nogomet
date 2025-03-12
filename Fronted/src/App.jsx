@@ -14,6 +14,9 @@ import TreneriPromjena from './pages/treneri/TreneriPromjena';
 import UtakmicePregled from './pages/utakmice/UtakmicePregled';
 import UtakmiceDodaj from './pages/utakmice/UtakmiceDodaj';
 import UtakmicePromjena from './pages/utakmice/UtakmicePromjena';
+import IgraciPregled from './pages/igraci/IgraciPregled';
+import IgraciDodaj from './pages/igraci/IgraciDodaj';
+import IgraciPromjena from './pages/igraci/IgraciPromjena';
 
 
 function App() {
@@ -42,6 +45,14 @@ function App() {
           <Route path={RouteNames.UTAKMICE_PREGLED} element={<UtakmicePregled />} />
           <Route path={RouteNames.UTAKMICE_NOVI} element={<UtakmiceDodaj />} />
           <Route path={RouteNames.UTAKMICE_PROMJENA} element={<UtakmicePromjena />} />
+          
+          <Route path={RouteNames.IGRACI_PREGLED} element={<IgraciPregled />} />
+          <Route path={RouteNames.IGRACI_NOVI} element={<IgraciDodaj />} />
+          <Route path={RouteNames.IGRACI_PROMJENA} element={<IgraciPromjena />} />
+          
+          
+          
+          
           </Routes>
     
        

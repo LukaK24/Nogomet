@@ -21,6 +21,8 @@ namespace Backend.Data
 
         public DbSet<Utakmice> Utakmice { get; set; }
         public object Utakmica { get; internal set; }
+
+        public DbSet<Igrac> Igraci { get; set; }
     }    }
        
      
