@@ -5,15 +5,19 @@ import Container from "react-bootstrap/Container";
 import { Route, Routes } from 'react-router-dom';
 import { RouteNames } from './constants';
 import Pocetna from './pages/Pocetna';
+
 import KluboviPregled from './pages/klubovi/KluboviPregled';
 import KluboviDodaj from './pages/klubovi/KluboviDodaj';
 import KluboviPromjena from './pages/klubovi/KluboviPromjena';
+
 import TreneriPregled from './pages/treneri/TreneriPregled';
 import TreneriDodaj from './pages/treneri/TreneriDodaj';
 import TreneriPromjena from './pages/treneri/TreneriPromjena';
+
 import UtakmicePregled from './pages/utakmice/UtakmicePregled';
 import UtakmiceDodaj from './pages/utakmice/UtakmiceDodaj';
 import UtakmicePromjena from './pages/utakmice/UtakmicePromjena';
+
 import IgraciPregled from './pages/igraci/IgraciPregled';
 import IgraciDodaj from './pages/igraci/IgraciDodaj';
 import IgraciPromjena from './pages/igraci/IgraciPromjena';
